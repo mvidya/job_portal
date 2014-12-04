@@ -12,12 +12,28 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    # role = user.role
+    role_name = user.role.name
 
-    if user.employer
-      roles_path
-    else
-      new_employer_path
+    if role_name == "Job Seeker"
+
+      if user.employee
+        employee_dashboard_home_index_path
+      else
+        new_employee_path
+      end
+
+    elsif role_name == "Company"
+
+      if user.employer  
+        employer_dashboard_home_index_path
+      else
+        new_employer_path
+      end
+
+    elsif role_name == 'Admin'
+
+      #root_to 'admin/index'
+
     end
 
   end

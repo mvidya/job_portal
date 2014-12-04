@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   belongs_to :role
   has_one :employer
+  has_one :employee
 end

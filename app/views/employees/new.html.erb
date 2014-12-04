@@ -1,0 +1,75 @@
+<h1>Hi,Welcome to Employee profile</h1>
+<% if flash[:error] %>
+<div class="error"><%= flash[:error] %> </div>
+<% end %>
+<%= form_for @employee do |f| %>
+<table>
+	<tr>
+	<td><%= f.hidden_field :user_id, :value => current_user.id %></td>
+	</tr>
+	<tr>
+		<td> Fname </td>
+		<td><%= f.text_field :Fname %></td>
+	</tr>
+	<tr>
+		<td> Lname </td>
+		<td><%= f.text_field :Lname %></td>
+	</tr>
+	<tr>
+		<td> dob </td>
+		<td><%= f.text_field :dob %></td>
+	</tr>
+	<tr>
+		<td> gender </td>
+		<td><%= f.text_field :gender %></td>
+	</tr>
+	<tr>
+		<td> email </td>
+		<td><%= f.text_field :email %></td>
+	</tr>
+	<tr>
+		<td> ph_number </td>
+		<td><%= f.text_field :ph_number %></td>
+	</tr>
+	<tr>
+		<td> state </td>
+		<td><%= f.number_field :state %></td>
+	</tr>
+	<tr>
+		<td> city </td>
+		<td><%= f.text_field :city %></td>
+	</tr>
+	<tr>
+		<td> address </td>
+		<td><%= f.text_area :address %></td>
+	</tr>
+	<tr>
+		<td> pin_code </td>
+		<td><%= f.number_field :pin_code %></td>
+	</tr>
+	<tr>
+		<td> qualification </td>
+		<td><%= f.text_field :qualification %></td>
+	</tr>
+	<tr>
+		<td> univercity </td>
+		<td><%= f.text_field :univercity %></td>
+	</tr>
+	<tr>
+		<td> percentage </td>
+		<td><%= f.number_field :percentage %></td>
+	</tr>
+</table>
+<%= f.submit "submit" %>
+<% end %>
+
+<style>
+	h1 {
+		color: purple;
+		text-align: center;
+		background-color: yellow;
+	}
+	.error{
+		color: #ff0000;
+	}	
+</style>

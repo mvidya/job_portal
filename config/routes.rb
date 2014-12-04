@@ -59,6 +59,18 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  #get '/homes/controller_home' => 'homes#controller_home'
+  resources :home do
+  collection do
+    get 'employer_dashboard'
+    get 'employee_dashboard'
+  end
+end
   resources :employers
+  resources :jobs 
   
+  resources :job_types
+  resources :employees
+  resources :applied_jobs
+
 end

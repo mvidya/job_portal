@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201185019) do
+ActiveRecord::Schema.define(version: 20141204113142) do
 
-  create_table "employer_addresses", force: true do |t|
-    t.integer  "employer_id"
+  create_table "applied_jobs", force: true do |t|
+    t.integer  "employee_id"
+    t.integer  "job_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employees", force: true do |t|
+    t.integer  "user_id"
+    t.string   "Fname"
+    t.string   "Lname"
+    t.date     "dob"
+    t.string   "gender"
+    t.string   "email"
+    t.integer  "ph_number"
+    t.string   "state"
+    t.string   "city"
+    t.text     "address"
+    t.integer  "pin_code"
+    t.string   "qualification"
+    t.string   "univercity"
+    t.integer  "percentage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employers", force: true do |t|
+    t.integer  "user_id"
+    t.string   "company_name"
+    t.string   "website_url"
     t.string   "country"
     t.string   "state"
     t.string   "city"
@@ -26,10 +54,21 @@ ActiveRecord::Schema.define(version: 20141201185019) do
     t.datetime "updated_at"
   end
 
-  create_table "employers", force: true do |t|
-    t.integer  "user_id"
-    t.string   "company_name"
-    t.string   "website_url"
+  create_table "job_types", force: true do |t|
+    t.string   "type_name"
+    t.text     "type_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", force: true do |t|
+    t.integer  "employer_id"
+    t.integer  "job_type_id"
+    t.date     "job_posted_on"
+    t.date     "job_expires_on"
+    t.integer  "salary"
+    t.string   "functional_area"
+    t.integer  "experience"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

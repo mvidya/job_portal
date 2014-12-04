@@ -1,0 +1,30 @@
+<h1>Showing Job_type details</h1>
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %> </div>
+<% end %>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Action</th>
+	</tr>
+	<% @job_types.each do |e| %>
+	<tr>
+		<td><%= e.type_name %></td>
+		<td><%= e.type_description %></td>
+		<td><%= link_to "Delete", job_type_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
+		<%= link_to "update", edit_job_type_path(e) %>
+		<%= link_to "show", job_type_path(e) %></td>
+	</tr>
+	<% end %>
+</table>
+
+<style>
+	table, tr, th, td {
+		border: 1px solid black;
+	} 
+	.notice{
+	color:#3ABf00;
+}
+</style>
+<%= link_to "new",new_job_type_path %>

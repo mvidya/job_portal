@@ -1,0 +1,48 @@
+<h1> Job information</h1>
+<p>
+	<strong>Welcom...</strong>
+	<h2><%= @job.employer.company_name %></h2>
+</p>
+
+<p>
+	<strong>job_type_id:</strong>
+	<%= @job.job_type_id %>
+</p>
+
+<p>
+	<strong>job_posted_on:</strong>
+	<%= @job.job_posted_on %>
+</p>
+
+<p>
+	<strong>job_expires_on:</strong>
+	<%= @job.job_expires_on %>
+</p>
+
+<p>
+	<strong>salary:</strong>
+	<%= @job.salary %>
+</p>
+
+<p>
+	<strong>functional_area:</strong>
+	<%= @job.functional_area %>
+</p>
+
+<p>
+	<strong>experience:</strong>
+	<%= @job.experience %>
+</p>
+
+<style>
+h2{
+	color:blue	;
+}
+h1{
+	color:blue;
+	text-align: center;
+	background-color: violet;
+}
+
+</style>
+<%= link_to "edit",edit_job_path %>

@@ -1,0 +1,47 @@
+<h1>Hi,Welcome to Job profile</h1>
+<% if flash[:error] %>
+<div class="error"><%= flash[:error] %> </div>
+<% end %>
+<%= form_for @job do |f| %>
+<table>
+	
+	<tr>
+		<td> Name </td>
+		<td><%= collection_select(:job, :job_type_id, JobType.all, :id, :type_name)  %> </td>
+	</tr>
+	<tr>
+		<td> Job_posted_on </td>
+		<td><%= f.text_field :job_posted_on %></td>
+	</tr>
+	<tr>
+		<td> Job_expires_on </td>
+		<td><%= f.text_field :job_expires_on %></td>
+	</tr>
+	<tr>
+		<td> Salary </td>
+		<td><%= f.text_field :salary %></td>
+	</tr>
+	<tr>
+		<td> Functional_area </td>
+		<td><%= f.text_field :functional_area %></td>
+	</tr>
+	<tr>
+		<td> experience </td>
+		<td><%= f.text_field :experience %></td>
+	</tr>
+<%= f.hidden_field :employer_id, :value => current_user.employer.id %>
+
+</table>
+<%= f.submit "submit" %>
+<% end %>
+
+<style>
+	h1 {
+		color: purple;
+		text-align: center;
+		background-color: yellow;
+	}
+	.error{
+		color: #ff0000;
+	}	
+</style>

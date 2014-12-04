@@ -1,0 +1,51 @@
+<h1>Showing Jobs details</h1>
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %> </div>
+<% end %>
+<table>
+	<tr>
+		<th>Fname</th>
+		<th>Lname</th>
+		<th>DOB</th>
+		<th>Gender</th>
+		<th>Email</th>
+		<th>Phone Number</th>
+		<th>State</th>
+		<th>City</th>
+		<th>Address</th>
+		<th>Pin Code</th>
+		<th>Qualification</th>
+		<th>Univercity</th>
+		<th>Percentage</th>
+	</tr>
+	<% @employees.each do |e| %>
+	<tr>
+		<td><%= e.Fname %></td>
+		<td><%= e.Lname %></td>
+		<td><%= e.dob %></td>
+		<td><%= e.gender %></td>
+		<td><%= e.email %></td>
+		<td><%= e.ph_number %></td>
+		<td><%= e.state %></td>
+		<td><%= e.city %></td>
+		<td><%= e.address %></td>
+		<td><%= e.pin_code %></td>
+		<td><%= e.qualification %></td>
+		<td><%= e.univercity %></td>
+		<td><%= e.percentage %></td>
+	
+		<td><%= link_to "Delete", job_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
+		<%= link_to "update", edit_job_path(e) %>
+		<%= link_to "show", job_path(e) %></td>
+	</tr>
+	<% end %>
+</table>
+
+<style>
+	table, tr, th, td {
+		border: 1px solid black;
+	} 
+	.notice{
+	color:#3ABf00;
+}
+</style>

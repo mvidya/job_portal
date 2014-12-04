@@ -1,7 +1,3 @@
-<h1>Hi,Welcome to Employer profile</h1>
-<% if flash[:error] %>
-<div class="error"><%= flash[:error] %> </div>
-<% end %>
 <%= form_for @employer do |f| %>
 <table>
 	<tr>
@@ -37,7 +33,7 @@
 	</tr>
 	<tr>
 		<td> contact_email </td>
-		<td><%= f.email_field :contact_email %></td>
+		<td><%= f.text_field :contact_email %></td>
 	</tr>
 	<tr>
 		<td> full_address </td>
@@ -46,14 +42,3 @@
 </table>
 <%= f.submit "submit" %>
 <% end %>
-
-<style>
-	h1 {
-		color: purple;
-		text-align: center;
-		background-color: yellow;
-	}
-	.error{
-		color: #ff0000;
-	}	
-</style>
