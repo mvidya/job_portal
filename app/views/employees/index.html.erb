@@ -1,4 +1,4 @@
-<h1>Showing Jobs details</h1>
+<h1>Showing Employee details</h1>
 <% if flash[:notice] %>
 <div class="notice"><%= flash[:notice] %> </div>
 <% end %>
@@ -34,9 +34,9 @@
 		<td><%= e.univercity %></td>
 		<td><%= e.percentage %></td>
 	
-		<td><%= link_to "Delete", job_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
-		<%= link_to "update", edit_job_path(e) %>
-		<%= link_to "show", job_path(e) %></td>
+		<td><%= link_to "Delete", employee_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
+		<%= link_to "update", edit_employee_path(e) %>
+		<%= link_to "show", employee_path(e) %></td>
 	</tr>
 	<% end %>
 </table>

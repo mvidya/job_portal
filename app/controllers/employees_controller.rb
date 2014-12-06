@@ -1,4 +1,7 @@
 class EmployeesController < ApplicationController
+
+  before_action :authenticate_user!, :is_account_exists?
+
   def new
     @employee = Employee.new()
   end

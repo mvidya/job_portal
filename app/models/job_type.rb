@@ -1,5 +1,5 @@
 class JobType < ActiveRecord::Base
 
-  belongs_to :job
+  has_many :jobs, :dependent => :destroy
   
 end

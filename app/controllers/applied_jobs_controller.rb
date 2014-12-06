@@ -1,4 +1,7 @@
 class AppliedJobsController < ApplicationController
+
+  before_action :authenticate_user!, :is_account_exists?
+  
   def new
     @applied_job = AppliedJob.new()
   end
@@ -13,6 +16,9 @@ class AppliedJobsController < ApplicationController
       redirect_to new_job_type_path
       flash[:notice] = "unsuccessful"
     end
+  end
+
+  def index
   end
 
   def show

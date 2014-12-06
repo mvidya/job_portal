@@ -2,7 +2,7 @@
 <% if flash[:notice] %>
 <div class="notice"><%= flash[:notice] %> </div>
 <% end %>
-<table>
+<table width="100%">
 	<tr>
 		<th>company_name</th>
 		<th>website_url</th>
@@ -13,7 +13,7 @@
 		<th>contact_number</th>
 		<th>contact_email</th>
 		<th>full_address</th>
-		<th>Action</th>
+		<th>Actions</th>
 	</tr>
 	<% @employers.each do |e| %>
 	<tr>

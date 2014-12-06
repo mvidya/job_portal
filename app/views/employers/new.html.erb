@@ -1,7 +1,5 @@
 <h1>Hi,Welcome to Employer profile</h1>
-<% if flash[:error] %>
-<div class="error"><%= flash[:error] %> </div>
-<% end %>
+
 <%= form_for @employer do |f| %>
 <table>
 	<tr>
@@ -53,7 +51,5 @@
 		text-align: center;
 		background-color: yellow;
 	}
-	.error{
-		color: #ff0000;
-	}	
+
 </style>

@@ -2,10 +2,10 @@
 <% if flash[:notice] %>
 <div class="notice"><%= flash[:notice] %> </div>
 <% end %>
-<table>
+<table width="100%">
 	<tr>
 		<th>company_name</th>
-		<th>job_type_id</th>
+		<th>job_type</th>
 		<th>job_posted_on</th>
 		<th>job_expires_on</th>
 		<th>salary</th>
@@ -16,7 +16,7 @@
 	<% @jobs.each do |e| %>
 	<tr>
 		<td><%= e.employer.company_name %></td>
-		<td><%= e.job_type_id %></td>
+		<td><%= e.job_type.type_name %></td>
 		<td><%= e.job_posted_on %></td>
 		<td><%= e.job_expires_on %></td>
 		<td><%= e.salary %></td>
@@ -38,4 +38,3 @@
 	}
 }
 </style>
-<h5><%= link_to "home", employer_dashboard_home_index_path %></h5>

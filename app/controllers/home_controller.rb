@@ -1,12 +1,11 @@
 class HomeController < ApplicationController
 
+  before_action :authenticate_user!, :is_account_exists?, :except => :index
+
   def index
-  end
-
-  def employer_dashboard
-  end
-
-  def employee_dashboard
+    if current_user
+      render :dashboard
+    end
   end
   
 end

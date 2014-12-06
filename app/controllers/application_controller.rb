@@ -5,6 +5,47 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def is_admin?
+    Role.find_by(name: "Admin").id == current_user.role_id
+  end
+
+  def is_employer?
+    Role.find_by(name: "Company").id == current_user.role_id
+  end
+
+  def is_employee?
+    Role.find_by(name: "Job Seeker").id == current_user.role_id
+  end
+
+  def is_account_exists?
+
+    if is_admin?
+      return true
+    elsif is_employer?
+      if current_user.employer
+        return true
+      else
+        flash[:error] = "Please setup your account before continuing"
+        redirect_to new_employer_path if (params[:controller] != "employers" or params[:action] != "new")
+      end
+    else # Job Seeker or Employee by default
+      if current_user.employee
+        return true
+      else
+        flash[:error] = "Please setup your account before continuing"
+        redirect_to new_employee_path if (params[:controller] != "employees" or params[:action] != "new")
+      end
+    end
+
+  end
+
+  def is_admin
+    unless is_admin?
+      flash[:error] = "Sorry you are not allowed to access that page."
+      redirect_to root_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -12,27 +53,27 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    role_name = user.role.name
+    # role_name = user.role.name
 
-    if role_name == "Job Seeker"
+    if is_employee?
 
       if user.employee
-        employee_dashboard_home_index_path
+        root_path
       else
         new_employee_path
       end
 
-    elsif role_name == "Company"
+    elsif is_employer?
 
       if user.employer  
-        employer_dashboard_home_index_path
+        root_path
       else
         new_employer_path
       end
 
-    elsif role_name == 'Admin'
+    else #by default the user will be Admin
 
-      #root_to 'admin/index'
+      root_path
 
     end
 

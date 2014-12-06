@@ -1,4 +1,7 @@
 class JobTypesController < ApplicationController
+
+  before_action :authenticate_user!, :is_account_exists?
+  
   def new
     @job_type = JobType.new()
   end

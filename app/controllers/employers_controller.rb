@@ -1,5 +1,10 @@
 class EmployersController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :is_account_exists?, :except => :create
+
+  before_action :is_admin, :only => :index
+
 
   def new
     @employer = Employer.new()
@@ -18,17 +23,21 @@ class EmployersController < ApplicationController
   end
 
   def index
-    @employers = Employer.all()
+    @employers = Employer.all
   end
 
   def destroy
     @employer = Employer.find(params[:id])
     @employer.destroy
-    redirect_to new_employer_path
+    redirect_to employers_path
   end
 
   def edit
-    @employer = Employer.find(params[:id])
+    if is_admin?
+      @employer = Employer.find(params[:id])
+    else
+      @employer = current_user.employer
+    end
   end
 
   def update
@@ -44,7 +53,7 @@ class EmployersController < ApplicationController
   private
 
   def employer_params
-    params.require(:employer).permit(:user_id, :company_name, :website_url, :country, :state, :city, :contact_person, :contact_number, :ontact_email, :full_address)
+    params.require(:employer).permit(:user_id, :company_name, :website_url, :country, :state, :city, :contact_person, :contact_number, :contact_email, :full_address)
   end
 
 end

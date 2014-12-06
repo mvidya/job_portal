@@ -6,15 +6,15 @@
 <table>
 	
 	<tr>
-		<td> Name </td>
+		<td> Type </td>
 		<td><%= collection_select(:job, :job_type_id, JobType.all, :id, :type_name)  %> </td>
 	</tr>
 	<tr>
-		<td> Job_posted_on </td>
+		<td> Posted On </td>
 		<td><%= f.text_field :job_posted_on %></td>
 	</tr>
 	<tr>
-		<td> Job_expires_on </td>
+		<td> Expires On </td>
 		<td><%= f.text_field :job_expires_on %></td>
 	</tr>
 	<tr>
@@ -22,14 +22,14 @@
 		<td><%= f.text_field :salary %></td>
 	</tr>
 	<tr>
-		<td> Functional_area </td>
+		<td> Functional Area </td>
 		<td><%= f.text_field :functional_area %></td>
 	</tr>
 	<tr>
-		<td> experience </td>
+		<td> Experience </td>
 		<td><%= f.text_field :experience %></td>
 	</tr>
-<%= f.hidden_field :employer_id, :value => current_user.employer.id %>
+	<%= f.hidden_field :employer_id, :value => current_user.employer.id %>
 
 </table>
 <%= f.submit "submit" %>

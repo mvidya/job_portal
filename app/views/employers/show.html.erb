@@ -44,4 +44,5 @@
 	<%= @employer.full_address %>
 </p>
 
-<%= link_to "home", employer_dashboard_home_index_path %></td>
+<%= link_to "home", root_path %></td> | 
+<%= link_to "edit", edit_employer_path(current_user.employer.id) %>

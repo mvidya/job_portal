@@ -64,6 +64,7 @@ Rails.application.routes.draw do
   collection do
     get 'employer_dashboard'
     get 'employee_dashboard'
+    get 'admin_dashboard'
   end
 end
   resources :employers
