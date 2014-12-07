@@ -8,18 +8,24 @@ class AppliedJobsController < ApplicationController
 
   def create
     @applied_job = AppliedJob.new(applied_job_params)
-    #@employer.user_id = current_user.id
     if @applied_job.save
-      redirect_to applied_job_path(@applied_job)
-      flash[:notice] = " employer information successfully saved"
+      flash[:notice] = "Successfully applied"
+      redirect_to jobs_path
     else
-      redirect_to new_job_type_path
-      flash[:notice] = "unsuccessful"
+      flash[:error] = "Error occurred while aplying to job, please try again."
+      redirect_to job_path(@applied_job.job_id)
     end
   end
 
   def index
+    if is_employee?
+     @applied_jobs = current_user.employee.applied_jobs
+   elsif is_admin?
+    @applied_jobs = AppliedJob.all
+  else
+    @applied_jobs = []
   end
+end
 
   def show
     @applied_job = AppliedJob.find(params[:id])

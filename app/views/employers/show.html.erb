@@ -5,44 +5,43 @@
 </p>
 
 <p>
-	<strong>Website_url:</strong>
+	<strong>Website Url:</strong>
 	<%= @employer.website_url %>
 </p>
 
 <p>
-	<strong>country:</strong>
+	<strong>Country:</strong>
 	<%= @employer.country %>
 </p>
 
 <p>
-	<strong>state:</strong>
+	<strong>State:</strong>
 	<%= @employer.state %>
 </p>
 
 <p>
-	<strong>city:</strong>
+	<strong>City:</strong>
 	<%= @employer.city %>
 </p>
 
 <p>
-	<strong>contact_person:</strong>
+	<strong>Contact Person:</strong>
 	<%= @employer.contact_person %>
 </p>
 
 <p>
-	<strong>contact_number:</strong>
+	<strong>Contact Number:</strong>
 	<%= @employer.contact_number %>
 </p>
 
 <p>
-	<strong>contact_email:</strong>
+	<strong>Contact Email:</strong>
 	<%= @employer.contact_email %>
 </p>
 
 <p>
-	<strong>full_address:</strong>
+	<strong>Full Address:</strong>
 	<%= @employer.full_address %>
 </p>
 
-<%= link_to "home", root_path %></td> | 
-<%= link_to "edit", edit_employer_path(current_user.employer.id) %>
+<%= link_to "Edit", edit_employer_path(current_user.employer.id) %>

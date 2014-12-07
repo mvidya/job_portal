@@ -1,12 +1,9 @@
-<h1>Hi,Welcome to Job_type profile</h1>
-<% if flash[:error] %>
-<div class="error"><%= flash[:error] %> </div>
-<% end %>
+<h1>Hi,Welcome to Job Type Profile</h1>
 <%= form_for @job_type do |f| %>
 <table>
 	
 	<tr>
-		<td> Name </td>
+		<td> Type </td>
 		<td><%= f.text_field :type_name %></td>
 	</tr>
 	<tr>
@@ -14,15 +11,10 @@
 		<td><%= f.text_area :type_description %></td>
 	</tr>
 </table>
-<%= f.submit "submit" %>
+<%= f.submit "Submit" %>
 <% end %>
 
 <style>
-	h1 {
-		color: purple;
-		text-align: center;
-		background-color: yellow;
-	}
 	.error{
 		color: #ff0000;
 	}	

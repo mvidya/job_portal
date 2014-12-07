@@ -1,28 +1,40 @@
 <h1>Showing Jobs details</h1>
-<% if flash[:notice] %>
-<div class="notice"><%= flash[:notice] %> </div>
+
+<% if is_employer? %>
+<span style="float:right"><%= link_to "New", new_job_path %></span>
 <% end %>
+
 <table width="100%">
 	<tr>
-		<th>company_name</th>
-		<th>job_type</th>
-		<th>job_posted_on</th>
-		<th>job_expires_on</th>
-		<th>salary</th>
-		<th>functional_area</th>
-		<th>experience</th>
-		<th>Action</th>
+		<th>Company Name</th>
+		<th>Job Type</th>
+		<th>Posted On</th>
+		<th>Expires On</th>
+		<th>Salary</th>
+		<th>Functional Area</th>
+		<th>Experience</th>
+		<th>No. of People Applied</th>
+		<th>Actions</th>
 	</tr>
-	<% @jobs.each do |e| %>
+	<% @jobs.each do |j| %>
 	<tr>
-		<td><%= e.employer.company_name %></td>
-		<td><%= e.job_type.type_name %></td>
-		<td><%= e.job_posted_on %></td>
-		<td><%= e.job_expires_on %></td>
-		<td><%= e.salary %></td>
-		<td><%= e.functional_area %></td>
-		<td><%= e.experience %></td>
-		<td><%= link_to "show", job_path(e) %></td></tr>
+		<td><%= j.employer.company_name %></td>
+		<td><%= j.job_type.type_name %></td>
+		<td><%= j.job_posted_on %></td>
+		<td><%= j.job_expires_on %></td>
+		<td><%= j.salary %></td>
+		<td><%= j.functional_area %></td>
+		<td><%= j.experience %></td>
+		<td><%= j.applied_jobs.count %></td>
+		<td>
+			<%= link_to "Show", job_path(j) %>
+			<% unless is_employee? %>
+			<%= link_to "Edit", edit_job_path(j) %>
+			<%= link_to "Delete", job_path(j), method: :delete, data: { confirm: 'Are you sure?' } %>
+			<%= link_to "Applied", applied_jobs_job_path(j) %>
+			<% end %>
+		</td>
+		
 	</tr>
 	<% end %>
 </table>
@@ -30,11 +42,8 @@
 <style>
 	table, tr, th, td {
 		border: 1px solid black;
-	} 
-	.notice{
-	color:#3ABf00;
+	}
 	h5{
 		color:#3ABf00;
 	}
-}
 </style>

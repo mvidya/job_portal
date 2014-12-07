@@ -1,6 +1,7 @@
 class JobTypesController < ApplicationController
 
   before_action :authenticate_user!, :is_account_exists?
+  before_action :is_admin
   
   def new
     @job_type = JobType.new()
@@ -11,7 +12,7 @@ class JobTypesController < ApplicationController
     #@employer.user_id = current_user.id
     if @job_type.save
       redirect_to job_types_path
-      flash[:notice] = " employer information successfully saved"
+      flash[:notice] = "information successfully saved"
     else
       redirect_to new_job_type_path
       flash[:notice] = "unsuccessful"

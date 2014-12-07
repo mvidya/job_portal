@@ -12,7 +12,6 @@ class EmployersController < ApplicationController
 
   def create
     @employer = Employer.new(employer_params)
-    #@employer.user_id = current_user.id
     if @employer.save
       redirect_to employer_path(@employer)
       flash[:notice] = " employer information successfully saved"
@@ -42,12 +41,22 @@ class EmployersController < ApplicationController
 
   def update
     @employer = Employer.find(params[:id])
-    @employer.update_attributes(employer_params)
-    redirect_to employer_path(@employer)
+    if @employer.update_attributes(employer_params)
+      flash[:notice] = "Successfully updated"
+      redirect_to employer_path(@employer)
+    else
+      flash[:error] = "Error while updating employer"
+      render :edit
+    end
+    
   end
 
   def show
-    @employer = Employer.find(params[:id])
+    if is_admin?
+      @employer = Employer.find(params[:id])
+    else
+      @employer = current_user.employer
+    end
   end
 
   private

@@ -1,7 +1,35 @@
-<h1>Applied Job</h1>
+<h1> Showing Applied Job</h1>
 <p>
-	<strong>name:</strong>
-	<%= @applied_job.employee.Fname %>
+	<strong>Company:</strong>
+	<%= @applied_job.job.employer.company_name %>
 </p>
 
-	
+<p>
+	<strong>Type:</strong>
+	<%= @applied_job.job.job_type.type_name %>
+</p>
+
+<p>
+	<strong>Posted On:</strong>
+	<%= @applied_job.job.job_posted_on %>
+</p>
+
+<p>
+	<strong>Expires On:</strong>
+	<%= @applied_job.job.job_expires_on %>
+</p>
+
+<p>
+	<strong>Salary:</strong>
+	<%= @applied_job.job.salary %>
+</p>
+
+<p>
+	<strong>Functional Area:</strong>
+	<%= @applied_job.job.functional_area %>
+</p>
+
+<p>
+	<strong>Experience:</strong>
+	<%= @applied_job.job.experience %>
+</p>

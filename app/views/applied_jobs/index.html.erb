@@ -1,0 +1,45 @@
+<h1>Showing Applied Jobs details</h1>
+
+<table width="100%">
+	<tr>
+		<th>Company Name</th>
+		<th>Job Type</th>
+		<th>Posted On</th>
+		<th>Expires On</th>
+		<th>Salary</th>
+		<th>Functional Area</th>
+		<th>Experience</th>
+		<th>Actions</th>
+	</tr>
+	<% @applied_jobs.each do |a_j| %>
+	<tr>
+		<td><%= a_j.job.employer.company_name %></td>
+		<td><%= a_j.job.job_type.type_name %></td>
+		<td><%= a_j.job.job_posted_on %></td>
+		<td><%= a_j.job.job_expires_on %></td>
+		<td><%= a_j.job.salary %></td>
+		<td><%= a_j.job.functional_area %></td>
+		<td><%= a_j.job.experience %></td>
+		<td>
+			<%= link_to "Show", applied_job_path(a_j) %>
+			<% unless is_employee? %>
+			<%= link_to "Edit", edit_job_path(a_j) %>
+			<%= link_to "Delete", job_path(a_j), method: :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
+		</td>
+		
+	</tr>
+	<% end %>
+</table>
+
+<style>
+	table, tr, th, td {
+		border: 1px solid black;
+	} 
+	.notice{
+		color:#3ABf00;
+	}
+	h5{
+		color:#3ABf00;
+	}
+</style>

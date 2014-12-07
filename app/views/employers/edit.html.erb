@@ -1,44 +1,52 @@
+
+<h1> Edit Your Details </h1>
+
 <%= form_for @employer do |f| %>
+
+<%= f.hidden_field :user_id, :value => current_user.id %>
+
 <table>
-	<tr>
-	<td><%= f.hidden_field :user_id, :value => current_user.id %></td>
-	</tr>
 	<tr>
 		<td> Name </td>
 		<td><%= f.text_field :company_name %></td>
 	</tr>
 	<tr>
-		<td> website_url </td>
+		<td> Website Url </td>
 		<td><%= f.text_field :website_url %></td>
 	</tr>
 	<tr>
-		<td> country </td>
+		<td> Country </td>
 		<td><%= f.text_field :country %></td>
 	</tr>
 	<tr>
-		<td> state </td>
+		<td> State </td>
 		<td><%= f.text_field :state %></td>
 	</tr>
 	<tr>
-		<td> city </td>
+		<td> City </td>
 		<td><%= f.text_field :city %></td>
 	</tr>
 	<tr>
-		<td> contact_person </td>
+		<td> Contact Person </td>
 		<td><%= f.text_field :contact_person %></td>
 	</tr>
 	<tr>
-		<td> contact_number </td>
+		<td> Contact Number </td>
 		<td><%= f.number_field :contact_number %></td>
 	</tr>
 	<tr>
-		<td> contact_email </td>
+		<td> Contact Email </td>
 		<td><%= f.text_field :contact_email %></td>
 	</tr>
 	<tr>
-		<td> full_address </td>
+		<td> Full Address </td>
 		<td><%= f.text_area :full_address %></td>
 	</tr>
+
+	<tr>
+		<td colspan="2"><%= f.submit "Submit" %> <%= link_to "Back", employers_path %> </td>
+	</tr>
+
 </table>
-<%= f.submit "submit" %>
+
 <% end %>

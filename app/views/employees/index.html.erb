@@ -1,42 +1,29 @@
 <h1>Showing Employee details</h1>
-<% if flash[:notice] %>
-<div class="notice"><%= flash[:notice] %> </div>
-<% end %>
-<table>
+<table width="100%">
 	<tr>
-		<th>Fname</th>
-		<th>Lname</th>
-		<th>DOB</th>
-		<th>Gender</th>
+		<th>Name</th>
 		<th>Email</th>
 		<th>Phone Number</th>
-		<th>State</th>
 		<th>City</th>
-		<th>Address</th>
-		<th>Pin Code</th>
 		<th>Qualification</th>
-		<th>Univercity</th>
 		<th>Percentage</th>
+		<th>Action</th>
 	</tr>
 	<% @employees.each do |e| %>
 	<tr>
-		<td><%= e.Fname %></td>
-		<td><%= e.Lname %></td>
-		<td><%= e.dob %></td>
-		<td><%= e.gender %></td>
+		<td>
+		<%= e.Fname %>
+		<%= e.Lname %>
+		</td>
 		<td><%= e.email %></td>
 		<td><%= e.ph_number %></td>
-		<td><%= e.state %></td>
 		<td><%= e.city %></td>
-		<td><%= e.address %></td>
-		<td><%= e.pin_code %></td>
 		<td><%= e.qualification %></td>
-		<td><%= e.univercity %></td>
 		<td><%= e.percentage %></td>
 	
 		<td><%= link_to "Delete", employee_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
-		<%= link_to "update", edit_employee_path(e) %>
-		<%= link_to "show", employee_path(e) %></td>
+		<%= link_to "Update", edit_employee_path(e) %>
+		<%= link_to "Show", employee_path(e) %></td>
 	</tr>
 	<% end %>
 </table>

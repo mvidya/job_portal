@@ -1,6 +1,10 @@
 class EmployeesController < ApplicationController
 
-  before_action :authenticate_user!, :is_account_exists?
+  before_action :authenticate_user!
+  before_action :is_account_exists?, :except => :create
+
+  before_action :is_admin, :only => :index
+
 
   def new
     @employee = Employee.new()
@@ -29,17 +33,30 @@ class EmployeesController < ApplicationController
   end
 
   def edit
-    @employee = Employee.find(params[:id])
+    if is_admin?
+      @employee = Employee.find(params[:id])
+    else
+      @employee = current_user.employee
+    end
   end
 
   def update
     @employee = Employee.find(params[:id])
-    @employee.update_attributes(employee_params)
-    redirect_to employee_path(@employee)
+    if @employee.update_attributes(employee_params)
+      flash[:notice] = "Successfully Updated"
+      redirect_to employee_path(@employee)
+    else
+      flash[:error] = "Error while updating employee"
+      render :edit
+    end
   end
 
   def show
-    @employee = Employee.find(params[:id])
+    if is_admin?
+      @employee = Employee.find(params[:id])
+    else
+      @employee = current_user.employee
+    end
   end
 
   private

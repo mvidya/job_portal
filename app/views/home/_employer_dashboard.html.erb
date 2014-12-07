@@ -1,10 +1,12 @@
 <h4>
 	<% if current_user.employer %>
-	<%= link_to 'update profile', employer_path(current_user.employer.id) %></br>
+	<%= link_to 'Update Profile', employer_path(current_user.employer.id) %></br>
+	<% else %>
+	<%= link_to 'Setup Your Profile', new_employer_path %></br>
 	<% end %>
 	
-	<%= link_to 'Post jobs', new_job_path %></br>
-	<%= link_to 'posted_jobs', jobs_path %>
+	<%= link_to 'Posted Jobs', jobs_path %></br>
+	<%= link_to 'Post a Job', new_job_path %></br>
 </h4>
 
 <style>

@@ -46,6 +46,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_employer
+    unless is_employer?
+      flash[:error] = "Sorry you are not allowed to access that page."
+      redirect_to root_path
+    end
+  end
+
+  def is_employee
+    unless is_employee?
+      flash[:error] = "Sorry you are not allowed to access that page."
+      redirect_to root_path
+    end
+  end
+
+
   protected
 
   def configure_permitted_parameters

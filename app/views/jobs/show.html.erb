@@ -1,31 +1,31 @@
 <h1> Job information</h1>
 <p>
-	<strong>Welcom...</strong>
-	<h2><%= @job.employer.company_name %></h2>
+	<strong>Company:</strong>
+	<%= @job.employer.company_name %>
 </p>
 
 <p>
-	<strong>job_type_id:</strong>
-	<%= @job.job_type_id %>
+	<strong>Type:</strong>
+	<%= @job.job_type.type_name %>
 </p>
 
 <p>
-	<strong>job_posted_on:</strong>
+	<strong>Posted On:</strong>
 	<%= @job.job_posted_on %>
 </p>
 
 <p>
-	<strong>job_expires_on:</strong>
+	<strong>Expires On:</strong>
 	<%= @job.job_expires_on %>
 </p>
 
 <p>
-	<strong>salary:</strong>
+	<strong>Salary:</strong>
 	<%= @job.salary %>
 </p>
 
 <p>
-	<strong>functional_area:</strong>
+	<strong>Functional Area:</strong>
 	<%= @job.functional_area %>
 </p>
 
@@ -34,15 +34,27 @@
 	<%= @job.experience %>
 </p>
 
+<% if current_user.employee %>
+<% unless AppliedJob.find_by(employee_id: current_user.employee.id, job_id: @job.id) %>
+<%= form_for AppliedJob.new() do |f|%>
+<%= f.hidden_field :employee_id, :value => current_user.employee.id %>
+<%= f.hidden_field :job_id, :value => @job.id %>
+<%= f.submit "Apply"%>
+<% end %>
+<% else %>
+You have already applied to this job!
+<% end %>
+<% end %>
+
 <style>
-h2{
-	color:blue	;
-}
-h1{
-	color:blue;
-	text-align: center;
-	background-color: violet;
-}
+	h2{
+		color:blue	;
+	}
+	h1{
+		color:blue;
+		text-align: center;
+		background-color: violet;
+	}
 
 </style>
-<%= link_to "edit",edit_job_path %>
+

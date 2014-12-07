@@ -1,0 +1,37 @@
+<h1>Applied Job Seekers List</h1>
+<table width="100%">
+	<tr>
+		<th>Name</th>
+		<th>Gender</th>
+		<th>Email</th>
+		<th>Phone Number</th>
+		<th>City</th>
+		<th>Qualification</th>
+		<th>Percentage</th>
+		<th>Applied On</th>
+	</tr>
+	<% unless @applied_jobs.empty? %>
+	<% @applied_jobs.each do |a_j| %>
+	<tr>
+		<td><%= a_j.employee.Fname %> <%= a_j.employee.Lname %></td>
+		<td><%= a_j.employee.gender %></td>
+		<td><%= a_j.employee.email %></td>
+		<td><%= a_j.employee.ph_number %></td>
+		<td><%= a_j.employee.city %></td>
+		<td><%= a_j.employee.qualification %></td>
+		<td><%= a_j.employee.percentage %></td>
+		<td><%= a_j.created_at.strftime("%d-%b-%y") %></td>
+	</tr>
+	<% end %>
+	<% else %>
+	<tr>
+		<td colspan="8" style="text-align:center;font-weight:bold;">No appliers Found</td>
+	</tr>
+	<% end %>
+</table>
+
+<style>
+	table, tr, th, td {
+		border: 1px solid black;
+	}
+</style>

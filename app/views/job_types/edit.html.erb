@@ -1,9 +1,9 @@
-<h1> Job Type edit form</h1>
+<h1> Edit Job Type</h1>
 <%= form_for @job_type do |f| %>
 <table>
 	
 	<tr>
-		<td> Name </td>
+		<td> Type </td>
 		<td><%= f.text_field :type_name %></td>
 	</tr>
 	<tr>
@@ -11,5 +11,5 @@
 		<td><%= f.text_area :type_description %></td>
 	</tr>
 </table>
-<%= f.submit "submit" %>
+<%= f.submit "Submit" %>
 <% end %>

@@ -1,34 +1,25 @@
-<h1>Showing employer details</h1>
-<% if flash[:notice] %>
-<div class="notice"><%= flash[:notice] %> </div>
-<% end %>
+<h1>Showing employers details</h1>
 <table width="100%">
 	<tr>
-		<th>company_name</th>
-		<th>website_url</th>
-		<th>country</th>
-		<th>state</th>
-		<th>city</th>
-		<th>contact_person</th>
-		<th>contact_number</th>
-		<th>contact_email</th>
-		<th>full_address</th>
+		<th>Company Name</th>
+		<th>Website Url</th>
+		<th>City</th>
+		<th>Contact Person</th>
+		<th>Contact Number</th>
+		<th>Contact Email</th>
 		<th>Actions</th>
 	</tr>
 	<% @employers.each do |e| %>
 	<tr>
 		<td><%= e.company_name %></td>
 		<td><%= e.website_url %></td>
-		<td><%= e.country %></td>
-		<td><%= e.state %></td>
 		<td><%= e.city %></td>
 		<td><%= e.contact_person %></td>
 		<td><%= e.contact_number %></td>
 		<td><%= e.contact_email %></td>
-		<td><%= e.full_address %></td>
 		<td><%= link_to "Delete", employer_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
-		<%= link_to "update", edit_employer_path(e) %>
-		<%= link_to "show", employer_path(e) %></td>
+		<%= link_to "Update", edit_employer_path(e) %>
+		<%= link_to "Show", employer_path(e) %></td>
 	</tr>
 	<% end %>
 </table>
