@@ -1,47 +1,52 @@
 <h1>showing employer information</h1>
-<p>
-	<strong>Company Name:</strong>
-	<%= @employer.company_name %>
-</p>
+<table>
+	<tr>
+		<td><strong>Company Name</strong></td>
+		<td><%= @employer.company_name %></td>
+	</tr>
 
-<p>
-	<strong>Website Url:</strong>
-	<%= @employer.website_url %>
-</p>
+	<tr>
+		<td><strong>Website Url</strong></td>
+		<td><%= @employer.website_url %></td>
+	</tr>
 
-<p>
-	<strong>Country:</strong>
-	<%= @employer.country %>
-</p>
+	<tr>
+		<td><strong>Country</strong></td>
+		<td><%= @employer.country %></td>
+	</tr>
 
-<p>
-	<strong>State:</strong>
-	<%= @employer.state %>
-</p>
+	<tr>
+		<td><strong>State</strong></td>
+		<td><%= @employer.state %></td>
+	</tr>
 
-<p>
-	<strong>City:</strong>
-	<%= @employer.city %>
-</p>
+	<tr>
+		<td><strong>City</strong></td>
+		<td><%= @employer.city %></td>
+	</tr>
 
-<p>
-	<strong>Contact Person:</strong>
-	<%= @employer.contact_person %>
-</p>
+	<tr>
+		<td><strong>Contact Person</strong></td>
+		<td><%= @employer.contact_person %></td>
+	</tr>
 
-<p>
-	<strong>Contact Number:</strong>
-	<%= @employer.contact_number %>
-</p>
+	<tr>
+		<td><strong>Contact Number</strong></td>
+		<td><%= @employer.contact_number %></td>
+	</tr>
 
-<p>
-	<strong>Contact Email:</strong>
-	<%= @employer.contact_email %>
-</p>
+	<tr>
+		<td><strong>Contact Email</strong></td>
+		<td><%= @employer.contact_email %></td>
+	</tr>
 
-<p>
-	<strong>Full Address:</strong>
-	<%= @employer.full_address %>
-</p>
+	<tr>
+		<td><strong>Full Address</strong></td>
+		<td><%= @employer.full_address %></td>
+	</tr>
+</table>
 
-<%= link_to "Edit", edit_employer_path(current_user.employer.id) %>
+<%= link_to "Edit", edit_employer_path(@employer) %> 
+<% if is_admin? %>
+|<%= link_to "Back", employers_path %>
+<% end %>

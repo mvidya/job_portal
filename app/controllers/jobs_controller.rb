@@ -2,7 +2,7 @@ class JobsController < ApplicationController
 
   before_action :authenticate_user!, :is_account_exists?
 
-  before_action :is_employer, :only => [:new, :create]
+  before_action :is_employer, :only => [:new, :create, :edit, :update]
 
   def new
     @job = Job.new()
@@ -12,10 +12,10 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     if @job.save
       redirect_to job_path(@job)
-      flash[:notice] = " employer information successfully saved"
+      flash[:notice] = "information successfully saved"
     else
       redirect_to new_job_path
-      flash[:notice] = "unsuccessful"
+      flash[:error] = "unsuccessful"
     end
   end
 
@@ -34,20 +34,26 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @job = current_user.employer.jobs.find(params[:id])
   end
 
   def update
     @job = Job.find(params[:id])
     if @job.update_attributes(job_params)
+      flash[:notice] = "successfully updated"
+      redirect_to job_path(@job)
     else
-      
+      flash[:error] = "Error while updating job"
+      render :edit
     end
-    redirect_to job_path(@job)
   end
 
   def show
-   @job = Job.find(params[:id])
+    if is_employer?
+      @job = current_user.employer.jobs.find(params[:id])
+    else
+     @job = Job.find(params[:id])
+   end
  end
 
  def applied_jobs

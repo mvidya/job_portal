@@ -21,9 +21,11 @@
 		<td><%= e.qualification %></td>
 		<td><%= e.percentage %></td>
 	
-		<td><%= link_to "Delete", employee_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
-		<%= link_to "Update", edit_employee_path(e) %>
-		<%= link_to "Show", employee_path(e) %></td>
+		<td>
+		<%= link_to "Edit", edit_employee_path(e) %>
+		<%= link_to "Show", employee_path(e) %>
+		<%= link_to "Delete", employee_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
+		</td>
 	</tr>
 	<% end %>
 </table>

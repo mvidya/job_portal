@@ -9,6 +9,14 @@
 		<th>Contact Email</th>
 		<th>Actions</th>
 	</tr>
+	<% if @employers.empty? %>
+	<tr>
+		<td colspan="7" style="text-align:center; font-weight:bold">
+			No Employers Found
+		</td>
+	</tr>
+	
+	<% else %>
 	<% @employers.each do |e| %>
 	<tr>
 		<td><%= e.company_name %></td>
@@ -17,10 +25,13 @@
 		<td><%= e.contact_person %></td>
 		<td><%= e.contact_number %></td>
 		<td><%= e.contact_email %></td>
-		<td><%= link_to "Delete", employer_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
-		<%= link_to "Update", edit_employer_path(e) %>
-		<%= link_to "Show", employer_path(e) %></td>
+		<td>
+			<%= link_to "Edit", edit_employer_path(e) %>
+			<%= link_to "Show", employer_path(e) %>
+			<%= link_to "Delete", employer_path(e), method: :delete, data: { confirm: "Are you sure!" } %>
+		</td>
 	</tr>
+	<% end %>
 	<% end %>
 </table>
 
@@ -29,6 +40,6 @@
 		border: 1px solid black;
 	} 
 	.notice{
-	color:#3ABf00;
-}
+		color:#3ABf00;
+	}
 </style>

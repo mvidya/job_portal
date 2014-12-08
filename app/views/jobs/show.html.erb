@@ -1,38 +1,46 @@
 <h1> Job information</h1>
-<p>
-	<strong>Company:</strong>
-	<%= @job.employer.company_name %>
-</p>
+<table>
+	<tr>
+		<td><strong>Company:</strong></td>
+		<td><%= @job.employer.company_name %></td>
+	</tr>
 
-<p>
-	<strong>Type:</strong>
-	<%= @job.job_type.type_name %>
-</p>
+	<tr>
+		<td><strong>Type:</strong></td>
+		<td><%= @job.job_type.type_name %></td>
+	</tr>
 
-<p>
-	<strong>Posted On:</strong>
-	<%= @job.job_posted_on %>
-</p>
+	<tr>
+		<td><strong>Posted On:</strong></td>
+		<td><%= @job.job_posted_on %></td>
+	</tr>
 
-<p>
-	<strong>Expires On:</strong>
-	<%= @job.job_expires_on %>
-</p>
+	<tr>
+		<td><strong>Expires On:</strong></td>
+		<td><%= @job.job_expires_on %></td>
+	</tr>
 
-<p>
-	<strong>Salary:</strong>
-	<%= @job.salary %>
-</p>
+	<tr>
+		<td><strong>Salary:</strong></td>
+		<td><%= @job.salary %></td>
+	</tr>
 
-<p>
-	<strong>Functional Area:</strong>
-	<%= @job.functional_area %>
-</p>
+	<tr>
+		<td><strong>Functional Area:</strong></td>
+		<td><%= @job.functional_area %></td>
+	</tr>
 
-<p>
-	<strong>experience:</strong>
-	<%= @job.experience %>
-</p>
+	<tr>
+		<td><strong>experience:</strong></td>
+		<td><%= @job.experience %></td>
+	</tr>
+</table>
+
+<%= link_to "Back", jobs_path %>
+
+<% if is_employer? %>
+| <%= link_to "Edit", edit_job_path(@job) %>
+<% end %>
 
 <% if current_user.employee %>
 <% unless AppliedJob.find_by(employee_id: current_user.employee.id, job_id: @job.id) %>
@@ -45,16 +53,3 @@
 You have already applied to this job!
 <% end %>
 <% end %>
-
-<style>
-	h2{
-		color:blue	;
-	}
-	h1{
-		color:blue;
-		text-align: center;
-		background-color: violet;
-	}
-
-</style>
-

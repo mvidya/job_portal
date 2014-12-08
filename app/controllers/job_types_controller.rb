@@ -11,11 +11,11 @@ class JobTypesController < ApplicationController
     @job_type = JobType.new(job_type_params)
     #@employer.user_id = current_user.id
     if @job_type.save
-      redirect_to job_types_path
       flash[:notice] = "information successfully saved"
+      redirect_to job_types_path
     else
-      redirect_to new_job_type_path
       flash[:notice] = "unsuccessful"
+      redirect_to new_job_type_path
     end
   end
 
@@ -35,8 +35,13 @@ class JobTypesController < ApplicationController
 
   def update
     @job_type = JobType.find(params[:id])
-    @job_type.update_attributes(job_type_params)
-    redirect_to job_types_path
+    if @job_type.update_attributes(job_type_params)
+      flash[:notice] = "successfully updated"
+      redirect_to job_types_path
+    else
+      flash[:error] = "Error while updating"
+      render :edit
+    end
   end
 
   def show

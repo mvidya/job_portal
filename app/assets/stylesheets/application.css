@@ -17,6 +17,7 @@
  	color: purple;
  	text-align: center;
  	background-color: yellow;
+
  }
  th{
  	height: 50px;
@@ -30,3 +31,9 @@
  th,td {
  	padding: 10px;
  }
+ 
+ h3{
+ 	color: blue;
+ }
+
+ 

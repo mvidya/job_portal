@@ -44,7 +44,7 @@
 	</tr>
 
 	<tr>
-		<td colspan="2"><%= f.submit "Submit" %> <%= link_to "Back", employers_path %> </td>
+		<td colspan="2"><%= f.submit "Submit" %> <% if is_admin? %> <%= link_to "Back", employers_path %> <% end %> </td>
 	</tr>
 
 </table>

@@ -1,67 +1,77 @@
 <h1>showing Your Details</h1>
-<p>
-	<strong>First Name:</strong>
-	<%= @employee.Fname %>
-</p>
+<table>
+<tr>
+	<td><strong>First Name</strong></td>
+	<td><%= @employee.Fname %></td>
+</tr>
 
-<p>
-	<strong>Last Name:</strong>
-	<%= @employee.Lname %>
-</p>
+<tr>
+	<td><strong>Last Name</strong></td>
+	<td><%= @employee.Lname %></td>
+</tr>
 
-<p>
-	<strong>DOB:</strong>
-	<%= @employee.dob %>
-</p>
+<tr>
+	<td><strong>DOB</strong></td>
+	<td><%= @employee.dob %></td>
+</tr>
 
-<p>
-	<strong>Gender:</strong>
-	<%= @employee.gender %>
-</p>
+<tr>
+	<td><strong>Gender</strong></td>
+	<td><%= @employee.gender %></td>
+</tr>
 
-<p>
-	<strong>Email Address:</strong>
-	<%= @employee.email %>
-</p>
+<tr>
+	<td><strong>Email Address</strong></td>
+	<td><%= @employee.email %></td>
+</tr>
 
-<p>
-	<strong>Phone Number:</strong>
-	<%= @employee.ph_number %>
-</p>
+<tr>
+	<td><strong>Phone Number</strong></td>
+	<td><%= @employee.ph_number %></td>
+</tr>
 
-<p>
-	<strong>State:</strong>
-	<%= @employee.state %>
-</p>
+<tr>
+	<td><strong>State</strong></td>
+	<td><%= @employee.state %></td>
+</tr>
 
-<p>
-	<strong>City:</strong>
-	<%= @employee.city %>
-</p>
+<tr>
+	<td><strong>City</strong></td>
+	<td><%= @employee.city %></td>
+</tr>
 
-<p>
-	<strong>Address:</strong>
-	<%= @employee.address %>
-</p>
+<tr>
+	<td><strong>Address</strong></td>
+	<td><%= @employee.address %></td>
+</tr>
 
-<p>
-	<strong>Pin Code:</strong>
-	<%= @employee.pin_code %>
-</p>
+<tr>
+	<td><strong>Pin Code</strong></td>
+	<td><%= @employee.pin_code %></td>
+</tr>
 
-<p>
-	<strong>Qualification:</strong>
-	<%= @employee.qualification %>
-</p>
+<tr>
+	<td><strong>Qualification</strong></td>
+	<td><%= @employee.qualification %></td>
+</tr>
 
-<p>
-	<strong>Univercity:</strong>
-	<%= @employee.univercity %>
-</p>
+<tr>
+	<td><strong>Univercity</strong></td>
+	<td><%= @employee.univercity %></td>
+</tr>
 
-<p>
-	<strong>Percentage(%):</strong>
-	<%= @employee.percentage %>
-</p>
+<tr>
+	<td><strong>Percentage(%)</strong></td>
+	<td><%= @employee.percentage %></td>
+</tr>
 
-<%= link_to "Edit", edit_employee_path(@employee) %></td>
+<tr>
+	<td><strong>Resume</strong></td>
+	<td><%= link_to @employee.document_file_name, @employee.document.url %></td>
+</tr>
+</table>
+
+<%= link_to "Edit", edit_employee_path(@employee) %> 
+<% if is_admin? %>
+| <%= link_to "Back", employees_path %>
+<% end %>

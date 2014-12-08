@@ -1,35 +1,39 @@
 <h1> Showing Applied Job</h1>
-<p>
-	<strong>Company:</strong>
-	<%= @applied_job.job.employer.company_name %>
-</p>
+<table>
+	<tr>
+		<td><strong>Company</strong></td>
+		<td><%= @applied_job.job.employer.company_name %></td>
+	</tr>
 
-<p>
-	<strong>Type:</strong>
-	<%= @applied_job.job.job_type.type_name %>
-</p>
+	<tr>
+		<td><strong>Type:</strong></td>
+		<td><%= @applied_job.job.job_type.type_name %></td>
+	</tr>
 
-<p>
-	<strong>Posted On:</strong>
-	<%= @applied_job.job.job_posted_on %>
-</p>
+	<tr>
+		<td><strong>Posted On:</strong></td>
+		<td><%= @applied_job.job.job_posted_on %></td>
+	</tr>
 
-<p>
-	<strong>Expires On:</strong>
-	<%= @applied_job.job.job_expires_on %>
-</p>
+	<tr>
+		<td><strong>Expires On:</strong></td>
+		<td><%= @applied_job.job.job_expires_on %></td>
+	</tr>
 
-<p>
-	<strong>Salary:</strong>
-	<%= @applied_job.job.salary %>
-</p>
+	<tr>
+		<td><strong>Salary:</strong></td>
+		<td><%= @applied_job.job.salary %></td>
+	</tr>
 
-<p>
-	<strong>Functional Area:</strong>
-	<%= @applied_job.job.functional_area %>
-</p>
+	<tr>
+		<td><strong>Functional Area:</strong></td>
+		<td><%= @applied_job.job.functional_area %></td>
+	</tr>
 
-<p>
-	<strong>Experience:</strong>
-	<%= @applied_job.job.experience %>
-</p>
+	<tr>
+		<td><strong>Experience:</strong></td>
+		<td><%= @applied_job.job.experience %></td>
+	</tr>
+
+</table>
+<%= link_to "Back", applied_jobs_path %>

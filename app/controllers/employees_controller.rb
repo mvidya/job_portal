@@ -12,13 +12,12 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
-    #@employer.user_id = current_user.id
     if @employee.save
+      flash[:notice] = "Employee information successfully saved"
       redirect_to employee_path(@employee)
-      flash[:notice] = " employer information successfully saved"
     else
-      redirect_to new_employee_path
-      flash[:notice] = "unsuccessful"
+      flash[:error] = "Error occurred while saving"
+      render :new
     end
   end
 
@@ -62,7 +61,7 @@ class EmployeesController < ApplicationController
   private
 
   def employee_params
-    params.require(:employee).permit(:user_id, :Fname, :Lname, :dob, :gender, :email, :ph_number, :state, :city, :address, :pin_code, :qualification, :univercity, :percentage)
+    params.require(:employee).permit(:user_id, :Fname, :Lname, :dob, :gender, :email, :ph_number, :state, :city, :address, :pin_code, :qualification, :univercity, :percentage, :document)
   end
 
 

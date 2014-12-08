@@ -9,11 +9,11 @@
 	</tr>
 	<tr>
 		<td> Posted On </td>
-		<td><%= f.text_field :job_posted_on %></td>
+		<td><%= f.date_select :job_posted_on, :order => [:day, :month, :year] %></td>
 	</tr>
 	<tr>
 		<td> Expires On </td>
-		<td><%= f.text_field :job_expires_on %></td>
+		<td><%= f.date_select :job_expires_on, :order => [:day, :month, :year] %></td>
 	</tr>
 	<tr>
 		<td> Salary </td>
@@ -31,7 +31,7 @@
 
 </table>
 
-<%= f.submit "submit" %>
+<%= f.submit "Submit" %> | <%= link_to "Back", jobs_path %>
 <% end %>
 
 <style>

@@ -1,10 +1,13 @@
 <h1>Showing Job Type Information</h1>
-<p>
-	<strong>Type:</strong>
-	<%= @job_type.type_name %>
-</p>
+<table>
+<tr>
+	<td><strong>Type:</strong></td>
+	<td><%= @job_type.type_name %></td>
+</tr>
 
-<p>
-	<strong>Description:</strong>
-	<%= @job_type.type_description %>
-</p>
+<tr>
+	<td><strong>Description:</strong></td>
+	<td><%= @job_type.type_description %></td>
+</tr>
+</table>
+<%= link_to "Back", job_types_path %>

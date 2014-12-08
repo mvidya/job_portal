@@ -40,3 +40,7 @@ gem 'debugger', group: [:development, :test]
 
 gem 'devise'
 
+gem "paperclip", "~> 4.2"
+
+gem 'mysql2'
+

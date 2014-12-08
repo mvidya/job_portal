@@ -13,9 +13,20 @@
 		<th>Salary</th>
 		<th>Functional Area</th>
 		<th>Experience</th>
+		<% unless is_employee? %>
 		<th>No. of People Applied</th>
+		<% end %>
 		<th>Actions</th>
 	</tr>
+
+	<% if @jobs.empty? %>
+	<tr>
+		<td colspan="9" style="text-align:center; font-weight:bold">
+			No Jobs Found
+		</td>
+	</tr>
+	
+	<% else %>
 	<% @jobs.each do |j| %>
 	<tr>
 		<td><%= j.employer.company_name %></td>
@@ -25,17 +36,23 @@
 		<td><%= j.salary %></td>
 		<td><%= j.functional_area %></td>
 		<td><%= j.experience %></td>
+		<% unless is_employee? %>
 		<td><%= j.applied_jobs.count %></td>
+		<% end %>
 		<td>
+
 			<%= link_to "Show", job_path(j) %>
 			<% unless is_employee? %>
+			<% unless is_admin? %>
 			<%= link_to "Edit", edit_job_path(j) %>
+			<% end %>
 			<%= link_to "Delete", job_path(j), method: :delete, data: { confirm: 'Are you sure?' } %>
 			<%= link_to "Applied", applied_jobs_job_path(j) %>
 			<% end %>
 		</td>
 		
 	</tr>
+	<% end %>
 	<% end %>
 </table>
 

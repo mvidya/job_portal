@@ -15,7 +15,7 @@
 	</tr>
 	<tr>
 		<td> DOB </td>
-		<td><%= f.text_field :dob %></td>
+		<td><%= f.date_select :dob, :order => [:day, :month, :year], start_year: 1950 %></td>
 	</tr>
 	<tr>
 		<td> Gender </td>
@@ -58,6 +58,12 @@
 		<td> Percentage(%) </td>
 		<td><%= f.number_field :percentage %></td>
 	</tr>
+
+	<tr>
+		<td> Upload Resume </td>
+		<td><%= f.file_field :document %></td>
+	</tr>
+	
 </table>
 <%= f.submit "Submit" %>
 <% end %>	

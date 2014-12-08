@@ -13,11 +13,11 @@ class EmployersController < ApplicationController
   def create
     @employer = Employer.new(employer_params)
     if @employer.save
-      redirect_to employer_path(@employer)
       flash[:notice] = " employer information successfully saved"
+      redirect_to employer_path(@employer)
     else
+      flash[:notice] = " error accurred while saving unsuccessful"
       redirect_to new_employer_path
-      flash[:notice] = "unsuccessful"
     end
   end
 
